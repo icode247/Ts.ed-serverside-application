@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    image: tes-ed/server:latest
+    ports:
+      - '8081:8081'
+    stdin_open: true
+    tty: true
+  mysql:
+    image: mysql:8.0.28-oracle
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: test
+  typeorm_datasource:
+    image: mysql:8.0.28-oracle
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: test
