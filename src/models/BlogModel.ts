@@ -16,7 +16,7 @@ export class BlogModel {
   content: string;
 
   @Column()
-  blogImage: string;
+  coverImage: string;
 
   @Column()
   @CreateDateColumn()
