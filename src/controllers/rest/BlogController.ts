@@ -16,7 +16,7 @@ export class BlogController {
 
   @Post("/")
   create(@MultipartFile("file") file: PlatformMulterFile, @BodyParams() blog: BlogModel): Promise<BlogModel> {
-    blog.blogImage = file.filename;
+    blog.coverImage = file.filename;
     return this.blogService.create(blog);
   }
 
